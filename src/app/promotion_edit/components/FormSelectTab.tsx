@@ -1,0 +1,48 @@
+import { useFormSelectTabState } from "@/hooks/useFormSelectTabState";
+import { usePageState } from "@/hooks/usePageState";
+
+const variants = {
+  selected:
+    "inline-block px-8 py-4 text-gray900 bg-gray100 rounded-lg active cursor-pointer",
+  unselected:
+    "inline-block px-8 py-4 rounded-lg hover:text-gray900 hover:bg-gray50 dark:hover:bg-gray800 dark:hover:text-white cursor-pointer",
+};
+
+export function FormSelectTab() {
+  const [formSelectTab, setFormSelectTab] = useFormSelectTabState();
+  const [pageState] = usePageState();
+
+  const isSelectedLayoutOrPage = !!(
+    pageState.selected ||
+    pageState.children.filter((child) => child.selected).length > 0
+  );
+
+  return (
+    <ul className="text-gray600 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray400 mb-16 pb-8 mb-40 border-b border-gray200">
+      <li className="mr-6">
+        <a
+          onClick={() => setFormSelectTab("style")}
+          className={
+            formSelectTab === "style" ? variants.selected : variants.unselected
+          }
+        >
+          스타일
+        </a>
+      </li>
+      {isSelectedLayoutOrPage ? null : (
+        <li className="mr-6">
+          <a
+            onClick={() => setFormSelectTab("action")}
+            className={
+              formSelectTab === "action"
+                ? variants.selected
+                : variants.unselected
+            }
+          >
+            액션
+          </a>
+        </li>
+      )}
+    </ul>
+  );
+}

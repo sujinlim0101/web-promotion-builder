@@ -1,0 +1,35 @@
+/* data-selected*/
+
+*[data-selected="true"] {
+  outline: 2px solid orange !important;
+  outline-offset: 0px;
+  &[data-open="true"] {
+    outline-offset: -2px;
+  }
+}
+
+*[data-open="false"] {
+  display: none;
+}
+
+*[data-selected]:hover {
+  outline: 1px solid rgb(34, 186, 186);
+  outline-offset: -1px;
+}
+
+*[data-selected="true"][data-id="page"] {
+  outline: 2px solid rgb(160, 207, 88) !important;
+  outline-offset: 0px;
+  .bar {
+    display: none;
+    > div {
+      background-color: rgb(160, 207, 88);
+    }
+  }
+  > .bar {
+    display: block !important ;
+  }
+  [data-open="false"] {
+    display: flex !important ;
+  }
+}
