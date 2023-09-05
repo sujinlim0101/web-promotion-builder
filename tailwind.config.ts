@@ -39,6 +39,11 @@ const config = {
     ...Object.keys(spacing).map((key) => `pr-${key}`),
     // gap
     ...Object.keys(spacing).map((key) => `gap-${key}`),
+    // position top, left, right, bottom
+    ...Object.keys(spacing).map((key) => `top-${key}`),
+    ...Object.keys(spacing).map((key) => `bottom-${key}`),
+    ...Object.keys(spacing).map((key) => `left-${key}`),
+    ...Object.keys(spacing).map((key) => `right-${key}`),
   ],
   plugins: [],
 };
