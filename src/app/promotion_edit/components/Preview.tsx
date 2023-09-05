@@ -105,7 +105,7 @@ export default function Preview() {
       </form>
       <div className="border-8 border-gray900 mt-16 rounded-lg">
         <div
-          className={`bg-white ${
+          className={`bg-white relative transform ${
             viewPort === "small_mobile" ? "w-375 h-667" : "w-414 h-896"
           }`}
         >

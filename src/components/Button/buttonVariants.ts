@@ -17,7 +17,7 @@ export const buttonVariants = tv({
       lg: "py-8 px-24 text-md",
     },
     fullWidth: {
-      true: "w-full",
+      true: "grow",
     },
   },
 });

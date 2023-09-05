@@ -26,6 +26,11 @@ interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
     right?: Spacing;
   };
   bgColor?: Color;
+  position?: "absolute" | "relative" | "fixed" | "sticky" | "static";
+  bottom?: number;
+  left?: number;
+  right?: number;
+  top?: number;
 }
 
 export const Layout = ({
@@ -40,6 +45,11 @@ export const Layout = ({
   margin = {},
   padding = {},
   bgColor,
+  position,
+  bottom,
+  left,
+  right,
+  top,
   ...args
 }: LayoutProps) => {
   return (
@@ -59,6 +69,11 @@ export const Layout = ({
         pb: padding.bottom,
         pl: padding.left,
         pr: padding.right,
+        position,
+        bottom,
+        left,
+        right,
+        top,
         bgColor,
         class: className,
       })}
