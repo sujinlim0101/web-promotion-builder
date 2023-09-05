@@ -358,8 +358,7 @@ const textStyleFormValues: TextForm = [
   {
     label: "텍스트",
     name: "text",
-    component: "Input",
-    type: "text",
+    component: "TextArea"
   },
   {
     label: "정렬",

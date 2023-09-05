@@ -41,6 +41,7 @@ export function Text({
         pb: padding?.bottom,
         pl: padding?.left,
         pr: padding?.right,
+        className: "whitespace-pre-line"
       })}
       {...args}
     >
