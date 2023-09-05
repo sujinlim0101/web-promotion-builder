@@ -3,6 +3,7 @@ import { Path, UseFormRegister } from "react-hook-form";
 import { Input } from "@/components/Input";
 import { Select } from "@/components/Select";
 import { SpaceInput } from "@/components/SpaceInput";
+import { TextArea } from "@/components/TextArea";
 import {
   formActionValues,
   formStyleValues,
@@ -51,6 +52,14 @@ export const FormRenderInput = ({
               options={element.options}
             />
           );
+        } else if (element.component === "TextArea") {
+          return (
+            <TextArea
+              key={index}
+              label={element.label}
+              register={register}
+              name={element.name as Path<Component>}
+            />)
         }
       })}
     </>

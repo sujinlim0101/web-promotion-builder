@@ -37,6 +37,11 @@ export type ComponentForm<T = any> = (
       name: keyof T;
       label: string;
     }
+  | {
+    component: "TextArea",
+    name: keyof T;
+    label: string;
+  }
 )[];
 
 export interface ButtonForm extends ComponentForm<ButtonComponent> {}
