@@ -18,29 +18,49 @@ export interface SpaceGroup {
   right: Spacing;
 }
 
-export interface SelectableComponent {
+export interface Selectable {
   name: ComponentTypeEnum;
   selected: boolean;
   id: string;
 }
 
-export type ActionComponent = {
-  action: {
-    type: "link" | "click" | "bridge" | null;
-    payload?: string;
-  };
+type BridgeName = 'DownloadCoupon' | 'DownloadApp' | 'OpenApp' | 'OpenLink' | 'OpenLinkInApp' | 'OpenLinkInBrowser' | 'OpenLinkInWebView' | 'OpenLinkInWebView'
+
+export type ActionBridge = {
+  type: "bridge";
+  bridgeName: BridgeName
+  payload: any;
+}
+
+export type ActionLink = {
+  type: "link";
+  href: string;
+}
+
+export type ActionClick = {
+  type: "click";
+  event: (args?: any) => void;
+}
+
+export type ActionNull = {
+  type: null;
+}
+
+export type Action = {
+  action: ActionLink | ActionClick | ActionBridge | ActionNull;
 };
 
+
 export type Component =
-  | ButtonComponent
+ ( | ButtonComponent
   | TextComponent
   | ImageComponent
   | PageComponent
-  | LayoutComponent;
+  | LayoutComponent)
 
 export type ItemComponent = ButtonComponent | TextComponent | ImageComponent;
 
-export interface ButtonComponent extends SelectableComponent, ActionComponent {
+export interface ButtonComponent extends Selectable, Action {
   name: ComponentTypeEnum.Button;
   text: string;
   color: "primary" | "secondary" | "success";
@@ -50,7 +70,7 @@ export interface ButtonComponent extends SelectableComponent, ActionComponent {
   margin: SpaceGroup;
 }
 
-export interface TextComponent extends SelectableComponent, ActionComponent {
+export interface TextComponent extends Selectable, Action {
   name: ComponentTypeEnum.Text;
   text: string;
   align: "left" | "center" | "right";
@@ -61,7 +81,7 @@ export interface TextComponent extends SelectableComponent, ActionComponent {
   padding: SpaceGroup;
 }
 
-export interface ImageComponent extends SelectableComponent, ActionComponent {
+export interface ImageComponent extends Selectable, Action {
   name: ComponentTypeEnum.Image;
   src: string;
   width: number;
@@ -69,7 +89,7 @@ export interface ImageComponent extends SelectableComponent, ActionComponent {
   justify: "start" | "center" | "end" | "inherit" | "between";
 }
 
-export interface LayoutComponent extends SelectableComponent {
+export interface LayoutComponent extends Selectable, Action {
   name: ComponentTypeEnum.Layout;
   direction: "row" | "col";
   items: "start" | "center" | "initial" | "inherit";
@@ -83,7 +103,7 @@ export interface LayoutComponent extends SelectableComponent {
   position?: "static" | "fixed" | "absolute" | "relative" | "sticky";
 }
 
-export interface PageComponent extends SelectableComponent {
+export interface PageComponent extends Selectable, Action {
   name: ComponentTypeEnum.Page;
   selected: boolean;
   children: LayoutComponent[];
