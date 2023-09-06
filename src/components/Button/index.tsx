@@ -32,7 +32,7 @@ export const Button = ({
   ...args
 }: ButtonProps) => {
   return (
-    <div>
+    <div className="flex">
       <button
         className={buttonVariants({
           color,

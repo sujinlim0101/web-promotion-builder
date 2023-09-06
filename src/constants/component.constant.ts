@@ -154,9 +154,25 @@ const defaultLayoutStyleValues: LayoutFormValues = {
   padding: DEFAULT_PADDING,
   spacing: 0,
   bgColor: "transparent",
+  position: "static"
 };
 
 export const layoutStyleFormValues: LayoutForm = [
+  {
+    label: "position",
+    name: "position",
+    component: "Select",
+    options: [
+      {
+        label: "일반",
+        value: "static",
+      },
+      {
+        label: "하단 고정",
+        value: "fixed",
+      },
+    ]
+  },
   {
     label: "justify 정렬",
     name: "justify",

@@ -80,6 +80,7 @@ export interface LayoutComponent extends SelectableComponent {
   bgColor?: Color;
   open?: boolean;
   spacing?: Spacing;
+  position?: "static" | "fixed" | "absolute" | "relative" | "sticky";
 }
 
 export interface PageComponent extends SelectableComponent {

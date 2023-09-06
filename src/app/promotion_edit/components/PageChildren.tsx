@@ -11,7 +11,12 @@ export default function PageChildren({ layout }: { layout: LayoutComponent }) {
   const [pageState] = usePageState();
 
   return (
-    <Layout {...layout} data-type="layout" data-open={layout.open}>
+    <Layout {...layout} data-type="layout" data-open={layout.open}
+      bottom={layout.position === "fixed" ? 0 : undefined}
+      right={layout.position === "fixed" ? 0 : undefined}
+      left={layout.position === "fixed" ? 0 : undefined}
+    
+    >
       {layout.children.length > 0 ? (
         layout.children.map((grandChild) => {
           if (grandChild.name === ComponentTypeEnum.Button) {
