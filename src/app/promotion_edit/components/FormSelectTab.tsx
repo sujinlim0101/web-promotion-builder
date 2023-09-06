@@ -1,3 +1,5 @@
+import { use, useEffect, useState } from "react";
+
 import { useFormSelectTabState } from "@/hooks/useFormSelectTabState";
 import { usePageState } from "@/hooks/usePageState";
 
@@ -11,11 +13,22 @@ const variants = {
 export function FormSelectTab() {
   const [formSelectTab, setFormSelectTab] = useFormSelectTabState();
   const [pageState] = usePageState();
+  const [isSelectedLayoutOrPage, setIsSelectedLayoutOrPage] = useState(false);
 
-  const isSelectedLayoutOrPage = !!(
-    pageState.selected ||
-    pageState.children.filter((child) => child.selected).length > 0
-  );
+  useEffect(() => {
+    setIsSelectedLayoutOrPage(
+      !!(
+        pageState.selected ||
+        pageState.children.filter((child) => child.selected).length > 0
+      )
+    );
+  }, [pageState]);
+
+  useEffect(() => {
+    if (isSelectedLayoutOrPage) {
+      setFormSelectTab("style");
+    }
+  }, [isSelectedLayoutOrPage]);
 
   return (
     <ul className="text-gray600 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray400 mb-16 pb-8 mb-40 border-b border-gray200">

@@ -64,9 +64,7 @@ export const defaultButtonStyleValues: ButtonFormValues = {
   fullWidth: false,
   margin: DEFAULT_MARGIN,
   action: {
-    type: "link",
-    payload:
-      "https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
+    type: null,
   },
 };
 
@@ -154,7 +152,10 @@ const defaultLayoutStyleValues: LayoutFormValues = {
   padding: DEFAULT_PADDING,
   spacing: 0,
   bgColor: "transparent",
-  position: "static"
+  position: "static",
+  action: {
+    type: null
+  }
 };
 
 export const layoutStyleFormValues: LayoutForm = [
@@ -295,6 +296,9 @@ const defaultPageStyleValues: PageFormValues = {
   margin: DEFAULT_MARGIN,
   padding: DEFAULT_PADDING,
   bgColor: "transparent",
+  action: {
+    type: null,
+  }
 };
 
 const imageStyleFormValues: ImageForm = [
@@ -493,8 +497,7 @@ const textStyleFormValues: TextForm = [
 ];
 
 const defaultButtonActionValues: ButtonComponent["action"] = {
-  type: "link",
-  payload: "#",
+  type: null
 };
 
 const defaultImageActionValues: ImageComponent["action"] = {

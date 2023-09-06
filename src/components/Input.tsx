@@ -27,6 +27,7 @@ export const Input = <T extends FieldValues>({
 
       <input
         {...register(name)}
+        autoFocus
         type={type}
         className={`${className} ${width === "xs" ? "w-40" : "w-full"} ${
           type !== "color"
