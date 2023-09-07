@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { formSelectTabState } from '@/recoil/formSelectTab';
 import { Component, LayoutComponent } from "@/types/component.type";
 
-import { useFormSelectTabState } from "./useFormSelectTabState";
 import { usePageState } from "./usePageState";
 
 export const useSelectedComponent = () => {

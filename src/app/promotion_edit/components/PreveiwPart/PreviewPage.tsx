@@ -7,11 +7,12 @@ import { WithSelectable } from "./WithSelectable";
 
 
 
-export const PreviewLayout = () => {
+export const PreviewPage = () => {
   const [pageState] = usePageState();
 
   return (
     <Layout
+      /** Layot for page */
       className="flex h-full flex-col overflow-scroll"
       data-selected={pageState.selected}
       data-id={"page"}
