@@ -1,13 +1,45 @@
 import { usePageState } from "@/hooks/usePageState";
-import { ComponentTypeEnum } from "@/types/component.type";
+import { Component, ComponentTypeEnum } from "@/types/component.type";
+import { openWeb, moveToApp, couponDownload} from "@/utils/bridges";
 
 import { Button } from "../Button";
 import { Image } from "../Image";
 import { Layout } from "../Layout"
 import { Text } from "../Text";
 
+
 export const CompoundPromotionView = () => {
   const [pageState] = usePageState();
+
+  const getAction = (component: Component) => {
+    console.log('component', component);
+    if (component.action === null) {
+      return;
+    }
+
+    if (component.action.type === "bridge") {
+      if (component.action.bridgeName === "moveToApp" && component.action.payload?.length) {
+        if (component.action.payload?.[0]) {
+          return () => moveToApp.apply(null, component.action!.payload as any)
+        }
+
+      }
+
+      if (component.action.bridgeName === "openWeb" && component.action.payload?.length) {
+        if (component.action.payload?.[0]) {
+          return () => openWeb.apply(null, component.action!.payload as any)
+        }
+      }
+
+      if (component.action.bridgeName === "downloadCoupon" && component.action.payload?.length) {
+        if (component.action.payload?.[0]) {
+          return () => couponDownload.apply(null, component.action!.payload as any)
+        }
+      }
+
+    }
+
+  }
 
   return (
     <Layout
@@ -29,15 +61,18 @@ export const CompoundPromotionView = () => {
             >
               {layout.children.map((grandChild) => {
                 if (grandChild.name === ComponentTypeEnum.Button) {
+									
                   return (
                     <Button
                       key={grandChild.id}
                       {...grandChild}
+                      onClick={getAction(grandChild)}
                     />
                   );
                 }
 
                 if (grandChild.name === ComponentTypeEnum.Image) {
+                  console.log('getAction', getAction(grandChild));
                   return (
                   // eslint-disable-next-line jsx-a11y/alt-text
                     <Image
@@ -45,6 +80,7 @@ export const CompoundPromotionView = () => {
                       data-id={grandChild.id}
                       data-selected={grandChild.selected}
                       {...grandChild}
+                      onClick={getAction(grandChild)}
                     />
                   );
                 }
@@ -55,6 +91,7 @@ export const CompoundPromotionView = () => {
                     <Text
                       key={grandChild.id}
                       {...grandChild}
+                      onClick={getAction(grandChild)}
                     />
                   );
                 }

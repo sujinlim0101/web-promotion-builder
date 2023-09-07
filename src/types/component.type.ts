@@ -24,39 +24,24 @@ export interface Selectable {
   id: string;
 }
 
-type BridgeName = 'DownloadCoupon' | 'DownloadApp' | 'OpenApp' | 'OpenLink' | 'OpenLinkInApp' | 'OpenLinkInBrowser' | 'OpenLinkInWebView' | 'OpenLinkInWebView'
+type BridgeName = "openWeb" | "downloadCoupon" | "moveToApp"
 
-export type ActionBridge = {
-  type: "bridge";
-  bridgeName: BridgeName
-  payload: any;
-}
-
-export type ActionLink = {
-  type: "link";
-  href: string;
-}
-
-export type ActionClick = {
-  type: "click";
-  event: (args?: any) => void;
-}
-
-export type ActionNull = {
-  type: null;
-}
 
 export type Action = {
-  action: ActionLink | ActionClick | ActionBridge | ActionNull;
+  action: {
+    type: "bridge" | null;
+    bridgeName?: BridgeName
+    payload: (string | number)[];
+  }
 };
 
 
 export type Component =
- ( | ButtonComponent
+  | ButtonComponent
   | TextComponent
   | ImageComponent
   | PageComponent
-  | LayoutComponent)
+  | LayoutComponent
 
 export type ItemComponent = ButtonComponent | TextComponent | ImageComponent;
 

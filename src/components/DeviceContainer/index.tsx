@@ -8,7 +8,7 @@ interface DeviceWrapperProps {
 export const DeviceContainer = ({ children }: DeviceWrapperProps) => {
   const [viewPort] = usePreviewViewportState();
   return (
-    <div className={`border-8 border-gray900 mt-16 rounded-lg overflow-scroll	flex flex-col ${
+    <div className={`border-8 border-gray900 mt-16 rounded-lg overflow-scroll	flex flex-col mx-auto ${
       viewPort === "small_mobile" ? "w-375 h-667" : "w-414 h-896"
     }`}>
       <div

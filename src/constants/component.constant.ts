@@ -65,7 +65,9 @@ export const defaultButtonStyleValues: ButtonFormValues = {
   margin: DEFAULT_MARGIN,
   action: {
     type: null,
-  },
+    payload: []
+
+  }
 };
 
 export const buttonStyleFormValues: ButtonForm = [
@@ -154,7 +156,8 @@ const defaultLayoutStyleValues: LayoutFormValues = {
   bgColor: "transparent",
   position: "static",
   action: {
-    type: null
+    type: null,
+    payload: []
   }
 };
 
@@ -298,6 +301,8 @@ const defaultPageStyleValues: PageFormValues = {
   bgColor: "transparent",
   action: {
     type: null,
+    payload: []
+
   }
 };
 
@@ -357,6 +362,8 @@ const defaultImageStyleValues: ImageFormValues = {
   justify: "center",
   action: {
     type: null,
+    payload: []
+
   },
 };
 
@@ -497,15 +504,20 @@ const textStyleFormValues: TextForm = [
 ];
 
 const defaultButtonActionValues: ButtonComponent["action"] = {
-  type: null
+  type: null,
+  payload: []
+
 };
 
 const defaultImageActionValues: ImageComponent["action"] = {
   type: null,
+  payload: []
+
 };
 
 const defaultTextActionValues: TextComponent["action"] = {
   type: null,
+  payload: []
 };
 
 const actionFormValues = [

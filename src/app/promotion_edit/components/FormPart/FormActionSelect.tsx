@@ -66,26 +66,18 @@ export const FormActionSelect = () => {
         label="액션 타입"
         {...register("action.type" as Path<Component>)}
         options={[
-          { label: "링크", value: "link" },
+          { label: "없음", value: null },
           { label: "브릿지", value: "bridge" },
-          { label: "클릭", value: "click" },
         ]}
       />
-      {watchActionType === "link" && <Input
-        label="링크 주소"
-        name="action.href"
-        register={register}
-        type="text"
-      />}
 
       {watchActionType === "bridge" && <Select
         label="브릿지 이름"
         {...register("action.bridgeName" as Path<Component>)}
         options={[
-          { label: "DownloadCoupon", value: "DownloadCoupon" },
-          { label: "DownloadApp", value: "DownloadApp" },
-          { label: "OpenApp", value: "OpenApp" },
-          { label: "OpenUrl", value: "OpenUrl" },
+          { label: "쿠폰 다운로드", value: "downloadCoupon" },
+          { label: "웹 열기", value: "openWeb" },
+          { label: "앱 열기", value: "moveToApp" },
         ]}
       />}
       {watchActionType === "bridge" && <div>
@@ -96,7 +88,7 @@ export const FormActionSelect = () => {
               <div key={field.id}>
 
                 <Input
-                  name={`action.payload.${index}.text`}
+                  name={`action.payload.${index}`}
                   register={register}
 
                 />
@@ -116,7 +108,7 @@ export const FormActionSelect = () => {
           className="flex justify-center w-full items-center gap-2 text-sm text-gray500"
           type="button"
           onClick={() => {
-            append({text: ""});
+            append("");
           }}
         > payload 추가
           <AiOutlinePlusCircle />
@@ -124,17 +116,6 @@ export const FormActionSelect = () => {
 
         
       </div>}
-
-      {
-        watchActionType === "click" &&
-        <Input
-          label="클릭 이벤트"
-          name="action.event"
-          register={register}
-          type="text"
-        />
-
-      }
 
     </form>
   );
