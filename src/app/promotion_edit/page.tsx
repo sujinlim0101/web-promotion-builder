@@ -1,15 +1,15 @@
 "use client";
 import { RecoilRoot } from "recoil";
 
-import { DisplaySection } from "./components/DisplaySection";
-import { FormSelectContainer } from "./components/FormSelectContainer";
+import { FormPart } from "./components/FormPart";
+import { PreveiwPart } from "./components/PreveiwPart";
 
 export default function Page() {
   return (
     <div className="flex h-full">
       <RecoilRoot>
-        <DisplaySection />
-        <FormSelectContainer />
+        <PreveiwPart />
+        <FormPart/>
       </RecoilRoot>
     </div>
   );

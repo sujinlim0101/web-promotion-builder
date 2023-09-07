@@ -7,7 +7,7 @@ import { useSelectedComponent } from "@/hooks/useSelectedComponent";
 import { useUpdateSelectedFormData } from "@/hooks/useUpdateSelectedFormData";
 import { Component } from "@/types/component.type";
 
-import { FormRenderInput } from "./FormRenderInput";
+import { FormRenderInputs } from "./FormRenderInputs";
 
 export const FormStyleSelect = () => {
   const [selectedComponent] = useSelectedComponent();
@@ -23,7 +23,7 @@ export const FormStyleSelect = () => {
       onChange={handleSubmit(updateSelectedFormData)}
     >
       {selectedComponent?.name ? (
-        <FormRenderInput
+        <FormRenderInputs
           name={selectedComponent?.name}
           register={register}
           formValues={formStyleValues}

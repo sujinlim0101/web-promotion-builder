@@ -7,7 +7,7 @@ import { Text } from "@/components/Text";
 import { usePageState } from "@/hooks/usePageState";
 import { ComponentTypeEnum, LayoutComponent } from "@/types/component.type";
 
-export default function PageChildren({ layout }: { layout: LayoutComponent }) {
+export const  PreviewItems = ({ layout }: { layout: LayoutComponent }) => {
   const [pageState] = usePageState();
 
   return (

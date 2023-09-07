@@ -9,7 +9,7 @@ import {
   LayoutComponent,
 } from "@/types/component.type";
 
-export const ComponentPick = () => {
+export const PreviewComponentPick = () => {
   const [pageState, setPageState] = usePageState();
 
   const handlePickLayout = () => {

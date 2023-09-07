@@ -9,7 +9,7 @@ import * as yup from "yup";
 import { Select } from "@/components/Select";
 import { usePageState } from "@/hooks/usePageState";
 
-import { PageComponent } from "./PageComponent";
+import { PreviewLayout } from "./PreviewLayout";
 
 type FormValues = {
   viewPort: string;
@@ -109,7 +109,7 @@ export default function Preview() {
             viewPort === "small_mobile" ? "w-375 h-667" : "w-414 h-896"
           }`}
         >
-          <PageComponent />
+          <PreviewLayout />
         </div>
       </div>
     </div>

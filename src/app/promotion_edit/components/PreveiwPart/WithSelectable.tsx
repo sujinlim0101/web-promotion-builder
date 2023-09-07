@@ -4,20 +4,21 @@ import React from "react";
 import OpenBar from "@/components/OpenBar";
 import { usePageState } from "@/hooks/usePageState";
 
-import "../../selected.scss";
+import "../../../selected.scss";
 import { LayoutComponent } from "@/types/component.type";
 
-import { useComponentSelect } from "../hooks/useComponentSelect";
+import { useComponentSelect } from "../../hooks/useComponentSelect";
+
 
 interface WithLayoutSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   layout: LayoutComponent;
 }
 
-export default function WithLayoutSelect({
+export const WithSelectable = ({
   children,
   layout,
-}: WithLayoutSelectProps) {
+}: WithLayoutSelectProps) => {
   const [pageState] = usePageState();
   const { handleComponentSelect, handleLayoutSelect } =
     useComponentSelect(layout);

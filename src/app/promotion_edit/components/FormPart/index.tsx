@@ -6,7 +6,7 @@ import { FormActionSelect } from "./FormActionSelect";
 import { FormSelectTab } from "./FormSelectTab";
 import { FormStyleSelect } from "./FormStyleSelect";
 
-export const FormSelectContainer = () => {
+export const FormPart = () => {
   const [formSelectTabState] = useFormSelectTabState();
   return (
     <div className="p-24 h-full border-white w-[300px] bg-white">
