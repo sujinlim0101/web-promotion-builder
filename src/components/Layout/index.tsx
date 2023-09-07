@@ -75,7 +75,7 @@ export const Layout = ({
         right,
         top,
         bgColor,
-        class: className,
+        class: "flex-wrap	" + className,
       })}
       {...args}
     >

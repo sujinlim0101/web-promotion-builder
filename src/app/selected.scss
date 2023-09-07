@@ -1,8 +1,8 @@
 /* data-selected*/
 
 *[data-selected="true"] {
-  outline: 2px solid orange !important;
-  outline-offset: 0px;
+  outline: 1px solid orange !important;
+  outline-offset: -1px;
   &[data-open="true"] {
     outline-offset: -2px;
   }

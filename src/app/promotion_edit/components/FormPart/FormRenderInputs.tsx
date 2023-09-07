@@ -16,7 +16,7 @@ interface FormRenderInputProps {
   formValues: typeof formStyleValues | typeof formActionValues;
 }
 
-export const FormRenderInput = ({
+export const FormRenderInputs = ({
   name,
   register,
   formValues,

@@ -2,14 +2,17 @@ import { Layout } from "@/components/Layout";
 import { usePageState } from "@/hooks/usePageState";
 import { ComponentTypeEnum } from "@/types/component.type";
 
-import PageChildren from "./PageChildren";
-import WithComponentSelect from "./WithComponentSelect";
+import { PreviewItems } from "./PreviewItems";
+import { WithSelectable } from "./WithSelectable";
 
-export const PageComponent = () => {
+
+
+export const PreviewPage = () => {
   const [pageState] = usePageState();
 
   return (
     <Layout
+      /** Layot for page */
       className="flex h-full flex-col overflow-scroll"
       data-selected={pageState.selected}
       data-id={"page"}
@@ -20,9 +23,9 @@ export const PageComponent = () => {
       {pageState.children.map((layout) => {
         if (layout.name === ComponentTypeEnum.Layout) {
           return (
-            <WithComponentSelect layout={layout} key={layout.id}>
-              <PageChildren layout={layout} />
-            </WithComponentSelect>
+            <WithSelectable layout={layout} key={layout.id}>
+              <PreviewItems layout={layout} />
+            </WithSelectable>
           );
         }
       })}
