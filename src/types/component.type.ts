@@ -31,7 +31,7 @@ export type Action = {
   action: {
     type: "bridge" | null;
     bridgeName?: BridgeName
-    payload: (string | number)[];
+    payload: any[];
   }
 };
 
