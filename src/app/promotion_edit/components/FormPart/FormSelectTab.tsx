@@ -5,9 +5,9 @@ import { usePageState } from "@/hooks/usePageState";
 
 const variants = {
   selected:
-    "inline-block px-8 py-4 text-gray900 bg-gray100 rounded-lg active cursor-pointer",
+    "inline-block px-8 py-4 text-gray900 bg-gray100 rounded-lg active cursor-pointer dark:bg-gray700 dark:text-white",
   unselected:
-    "inline-block px-8 py-4 rounded-lg hover:text-gray900 hover:bg-gray50 dark:hover:bg-gray800 dark:hover:text-white cursor-pointer",
+    "inline-block px-8 py-4 rounded-lg hover:text-gray900 hover:bg-gray50 dark:hover:bg-gray700 dark:hover:text-white cursor-pointer dark:bg-gray800 dark:text-white",
 };
 
 export function FormSelectTab() {
@@ -31,7 +31,7 @@ export function FormSelectTab() {
   }, [isSelectedLayoutOrPage]);
 
   return (
-    <ul className="text-gray600 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray400 mb-16 pb-8 mb-40 border-b border-gray200">
+    <ul className="text-gray600 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray400 mb-16 pb-8 mb-40 border-b border-gray200 dark:border-gray600">
       <li className="mr-6">
         <a
           onClick={() => setFormSelectTab("style")}
