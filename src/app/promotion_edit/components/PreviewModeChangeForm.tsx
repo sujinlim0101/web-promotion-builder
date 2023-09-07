@@ -7,33 +7,39 @@ import { Select } from "@/components/Select";
 import { viewPortOptions } from "@/constants/viewPort.constant";
 import { usePageState } from "@/hooks/usePageState";
 import { usePreviewViewportState } from "@/hooks/usePreviewViewportState";
+import { useViewModeState } from "@/hooks/useViewModeState";
 import type { PreviewViewPort } from "@/types/styles.type";
 
 
 type FormValues = {
     viewPort: PreviewViewPort;
-    pageSelected: boolean;
+    viewMode: "edit" | "page"
   };
 
 export const PreviewModeChangeForm = () => {
 
   const [viewPort, setViewPort] = usePreviewViewportState()
+  const [, setViewMode] = useViewModeState();
+
   const [pageState, setPageState] = usePageState();
   
   const { register, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       viewPort: "small_mobile",
-      pageSelected: false,
+      viewMode: "edit",
     },
     values: {
-      pageSelected: pageState.selected,
       viewPort: viewPort,
+      viewMode: pageState.selected ? "page" : "edit",
+
     },
   });
   
   const onSubmit = (data: FormValues) => {
     setViewPort(data.viewPort);
-    if (data.pageSelected === true) {
+    setViewMode(data.viewMode);
+  
+    if (data.viewMode === "page") {
       setPageState({
         ...pageState,
         selected: true,
@@ -73,20 +79,22 @@ export const PreviewModeChangeForm = () => {
       });
     }
   };
-  return       <form
-    onChange={handleSubmit(onSubmit)}
-    className="flex flex-row gap-8 justify-end mr-4 mb-4"
-  >
-    <Select
-      {...register("viewPort")}
-      options={viewPortOptions}
-    />
-    <Select
-      {...register("pageSelected")}
-      options={[
-        { value: true, label: "전체 모드" },
-        { value: false, label: "수정 모드" },
-      ]}
-    />
-  </form>
+  return (
+    <form
+      onChange={handleSubmit(onSubmit)}
+      className="flex flex-row gap-8 justify-center mr-4 mb-4"
+    >
+      <Select
+        {...register("viewPort")}
+        options={viewPortOptions}
+      />
+      <Select
+        {...register("viewMode")}
+        options={[
+          { label: "페이지 모드", value: "page" },
+          { label: "편집 모드", value: "edit" },
+        ]}
+      />
+    </form>
+  )
 }
