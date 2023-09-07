@@ -378,6 +378,7 @@ const defaultTextStyleValues: TextFormValues = {
   padding: DEFAULT_PADDING,
   action: {
     type: null,
+    payload: []
   },
 };
 
