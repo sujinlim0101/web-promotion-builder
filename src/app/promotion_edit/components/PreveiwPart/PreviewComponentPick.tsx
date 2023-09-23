@@ -85,7 +85,7 @@ export const PreviewComponentPick = () => {
   if (pageState.selected) return null;
 
   return (
-    <div className="flex gap-8 flex-col py-72">
+    <div className="flex gap-8 flex-col py-72 w-36">
       {picks.map((component) => {
         return (
           <div
