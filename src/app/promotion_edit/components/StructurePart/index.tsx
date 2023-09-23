@@ -5,7 +5,7 @@ import { useComponentSelect } from "../../hooks/useComponentSelect";
 import { LayoutDropdown } from "./LayoutDropdown";
 
 export const StructurePart = () => {
-  const [pageState, setPageState] = usePageState();
+  const [pageState] = usePageState();
   const { updatePageSelected } = useComponentSelect();
 
   return (
