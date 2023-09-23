@@ -1,3 +1,4 @@
+import { useDeleteSeletedByListener } from "@/hooks/useDeleteSeletedByListener";
 import { usePageState } from "@/hooks/usePageState";
 
 import { useComponentSelect } from "../../hooks/useComponentSelect";
@@ -7,6 +8,7 @@ import { LayoutDropdown } from "./LayoutDropdown";
 export const StructurePart = () => {
   const [pageState] = usePageState();
   const { updatePageSelected } = useComponentSelect();
+  useDeleteSeletedByListener();
 
   return (
     <div className="w-[200px] border-1 border-gray300 border-solid">

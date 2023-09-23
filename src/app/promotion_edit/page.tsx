@@ -4,7 +4,9 @@ import { RecoilRoot } from "recoil";
 import { FormPart } from "./components/FormPart";
 import { PreveiwPart } from "./components/PreveiwPart";
 import { StructurePart } from "./components/StructurePart";
+
 import "../selected.scss";
+import { useDeleteSeletedByListener } from "@/hooks/useDeleteSeletedByListener";
 
 export default function Page() {
   return (
