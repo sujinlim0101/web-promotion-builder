@@ -41,8 +41,11 @@ export const PreviewComponentPick = () => {
   };
 
   const handlePickItem = (component: ComponentTypeEnum) => {
+    // if child is selected or child' children is selected
     const selectedLayout = pageState.children.find(
-      (child) => child.open === true
+      (child) =>
+        child.selected === true ||
+        child.children.some((grandChild) => grandChild.selected === true)
     ) as LayoutComponent;
     // make previous selected false & add button to selected layout
 

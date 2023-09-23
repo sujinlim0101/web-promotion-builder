@@ -15,8 +15,8 @@ export const PreviewItems = ({ layout }: { layout: LayoutComponent }) => {
   const { updateChildrenSelectedById } = useComponentSelect();
 
   const onLayoutSelect = (e: React.MouseEvent<HTMLDivElement>) => {
-    // if event target is it self, then select layout
-    if (e.target === e.currentTarget) {
+    // if event target is it self, then select layout or if it has no children
+    if (e.target === e.currentTarget || layout.children.length === 0) {
       updateChildrenSelectedById(layout.id);
     }
   };
