@@ -26,17 +26,15 @@ export const useSelectedComponent = () => {
       return;
     }
 
-    const openLayout = pageState.children.find(
-      (child) => child.open
-    ) as LayoutComponent;
+    // if children's children is selected
+    const selectedComponent = pageState.children
+      .map((child) => child.children)
+      .flat()
+      .find((child) => child.selected);
 
-    // if item is selected
-    if (openLayout) {
-      // open layout's selected child
-      const selectedChild = openLayout.children.find(
-        (child) => child.selected
-      ) as unknown as Component;
-      setSelectedComponent(selectedChild);
+    if (selectedComponent) {
+      setSelectedComponent(selectedComponent);
+      return;
     }
   }, [pageState]);
 

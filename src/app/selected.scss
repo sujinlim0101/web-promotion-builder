@@ -1,20 +1,13 @@
 /* data-selected*/
 
 *[data-selected="true"] {
-  outline: 1px solid orange !important;
-  outline-offset: -1px;
-  &[data-open="true"] {
-    outline-offset: -2px;
-  }
-}
-
-*[data-open="false"] {
-  display: none;
+  outline: 1.5px solid orange !important;
+  outline-offset: -1.5px;
 }
 
 *[data-selected]:hover {
-  outline: 1px solid rgb(34, 186, 186);
-  outline-offset: -1px;
+  outline: 1.5px solid rgb(34, 186, 186);
+  outline-offset: -1.5px;
 }
 
 *[data-selected="true"][data-id="page"] {

@@ -1,60 +1,58 @@
-import { SyntheticEvent } from "react";
-
 import { usePageState } from "@/hooks/usePageState";
-import { LayoutComponent } from "@/types/component.type";
 
-export const useComponentSelect = (layout: LayoutComponent) => {
+export const useComponentSelect = () => {
   const [pageState, setPageState] = usePageState();
-  const handleLayoutSelect = () => {
+  const updateChildrenSelectedById = (id: string) => {
+    // update pageState selected false and compare children or children's children id and update selected true
+
     setPageState({
       ...pageState,
       selected: false,
       children: pageState.children.map((child) => {
-        if (child.id === layout.id) {
+        if (child.id === id) {
           return {
             ...child,
             selected: true,
-            open: true,
-            // make unselected and close of children
             children: child.children.map((grandChild) => {
               return {
                 ...grandChild,
                 selected: false,
-                open: false,
               };
             }),
           };
+        } else {
+          return {
+            ...child,
+            selected: false,
+            children: child.children.map((grandChild) => {
+              if (grandChild.id === id) {
+                return {
+                  ...grandChild,
+                  selected: true,
+                };
+              } else {
+                return {
+                  ...grandChild,
+                  selected: false,
+                };
+              }
+            }),
+          };
         }
-        return { ...child, open: false, selected: false };
       }),
     });
   };
 
-  const handleItemSelect = (e: SyntheticEvent<HTMLElement, Event>) => {
-    // @ts-ignore
-    const elementId = e.target.dataset.id;
-    if (!elementId) {
-      return;
-    }
-    // find deeply nested element and make it selected and close and unselect other layouts or children
+  const updatePageSelected = () => {
+    // page selected true and children and children's children selected false
     setPageState({
       ...pageState,
-      selected: false,
+      selected: true,
       children: pageState.children.map((child) => {
         return {
           ...child,
           selected: false,
-          // if its' children is selected, open it
-          open: child.children.find((grandChild) => grandChild.id === elementId)
-            ? true
-            : child.open,
           children: child.children.map((grandChild) => {
-            if (grandChild.id === elementId) {
-              return {
-                ...grandChild,
-                selected: true,
-              };
-            }
             return {
               ...grandChild,
               selected: false,
@@ -65,15 +63,8 @@ export const useComponentSelect = (layout: LayoutComponent) => {
     });
   };
 
-  const handleComponentSelect = (e: React.MouseEvent<HTMLElement>) => {
-    // @ts-ignore
-    const isItem = e.target.dataset.type === "item";
-    if (isItem) handleItemSelect(e);
-    if (!isItem) handleLayoutSelect();
-  };
-
   return {
-    handleLayoutSelect,
-    handleComponentSelect,
+    updateChildrenSelectedById,
+    updatePageSelected,
   };
 };

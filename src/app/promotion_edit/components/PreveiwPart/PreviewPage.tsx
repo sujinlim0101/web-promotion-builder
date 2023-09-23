@@ -3,9 +3,6 @@ import { usePageState } from "@/hooks/usePageState";
 import { ComponentTypeEnum } from "@/types/component.type";
 
 import { PreviewItems } from "./PreviewItems";
-import { WithSelectable } from "./WithSelectable";
-
-
 
 export const PreviewPage = () => {
   const [pageState] = usePageState();
@@ -22,11 +19,7 @@ export const PreviewPage = () => {
     >
       {pageState.children.map((layout) => {
         if (layout.name === ComponentTypeEnum.Layout) {
-          return (
-            <WithSelectable layout={layout} key={layout.id}>
-              <PreviewItems layout={layout} />
-            </WithSelectable>
-          );
+          return <PreviewItems layout={layout} key={layout.id} />;
         }
       })}
     </Layout>

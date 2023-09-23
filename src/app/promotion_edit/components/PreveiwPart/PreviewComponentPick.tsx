@@ -22,6 +22,12 @@ export const PreviewComponentPick = () => {
             ...child,
             selected: false,
             open: false,
+            children: child.children.map((grandChild) => {
+              return {
+                ...grandChild,
+                selected: false,
+              };
+            }),
           };
         }),
         {
@@ -83,7 +89,7 @@ export const PreviewComponentPick = () => {
             key={component.component}
             data-tooltip-target="button-loader-example-mobile-tooltip"
             data-id={component}
-            className="flex items-center justify-center w-36 h-36 font-medium text-gray700 bg-white border border-gray200 rounded-lg toggle-mobile-view hover:bg-gray100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray300 dark:focus:ring-gray500 dark:bg-gray800 focus:outline-none dark:text-gray400 dark:border-gray600 dark:hover:text-white dark:hover:bg-gray700 text-base"
+            className={`flex items-center justify-center w-36 h-36 font-medium text-gray700 bg-white border border-gray200 rounded-lg toggle-mobile-view hover:bg-gray100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray300 dark:focus:ring-gray500 dark:bg-gray800 focus:outline-none dark:text-gray400 dark:border-gray600 dark:hover:text-white dark:hover:bg-gray700 text-base`}
             onClick={() => {
               if (component.component === ComponentTypeEnum.Layout) {
                 handlePickLayout();

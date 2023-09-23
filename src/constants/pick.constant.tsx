@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
 import { BsImage } from "react-icons/bs";
-import { FiLayout } from "react-icons/fi";
+import { LiaHashtagSolid } from "react-icons/lia";
 import { RxButton } from "react-icons/rx";
 import { TbTextSize } from "react-icons/tb";
 
@@ -15,7 +15,7 @@ export interface PickComponent {
 export const picks: PickComponent[] = [
   {
     component: ComponentTypeEnum.Layout,
-    icon: <FiLayout />,
+    icon: <LiaHashtagSolid />,
   },
   {
     component: ComponentTypeEnum.Button,

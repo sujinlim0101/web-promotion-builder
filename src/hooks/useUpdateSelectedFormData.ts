@@ -42,27 +42,26 @@ export const useUpdateSelectedFormData = () => {
       });
       return;
     } else {
-      // if item is selected
+      // if children's children is selected
       setPageState({
         ...pageState,
         children: pageState.children.map((child) => {
-          if (child.open) {
-            return {
-              ...child,
-              children: child.children.map((grandChild) => {
-                if (grandChild.id === selectedComponent?.id) {
-                  return {
-                    ...grandChild,
-                    ...data,
-                  } as ItemComponent;
-                }
-                return grandChild;
-              }),
-            };
-          }
-          return child;
+          return {
+            ...child,
+            children: child.children.map((grandChild) => {
+              if (grandChild.id === selectedComponent?.id) {
+                return {
+                  ...grandChild,
+                  ...data,
+                } as ItemComponent;
+              }
+              return grandChild;
+            }),
+          } as LayoutComponent;
         }),
       });
+
+      return;
     }
   };
 
