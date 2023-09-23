@@ -36,10 +36,17 @@ export const useDeleteSeletedByListener = () => {
   };
 
   useEffect(() => {
-    // delete keyboard listener
-    window.addEventListener("keydown", deleteSelectedByListener);
+    // delete keyboard listener for onl backspace
+    const deleteWithBackSpace = (e: KeyboardEvent) => {
+      if (e.key === "Backspace") {
+        deleteSelectedByListener();
+      }
+    };
+
+    window.addEventListener("keydown", deleteWithBackSpace);
+
     return () => {
-      window.removeEventListener("keydown", deleteSelectedByListener);
+      window.removeEventListener("keydown", deleteWithBackSpace);
     };
   }, [pageState]);
 
