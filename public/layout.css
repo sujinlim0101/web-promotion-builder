@@ -3726,20 +3726,3 @@ select {
   outline: 1.5px solid rgb(34, 186, 186);
   outline-offset: -1.5px;
 }
-
-*[data-selected="true"][data-id="page"] {
-  outline: 2px solid rgb(160, 207, 88) !important;
-  outline-offset: 0px;
-}
-*[data-selected="true"][data-id="page"] .bar {
-  display: none;
-}
-*[data-selected="true"][data-id="page"] .bar > div {
-  background-color: rgb(160, 207, 88);
-}
-*[data-selected="true"][data-id="page"] > .bar {
-  display: block !important;
-}
-*[data-selected="true"][data-id="page"] [data-open="false"] {
-  display: flex !important;
-}
