@@ -1,7 +1,7 @@
 {
   "extends": ["next", "prettier"],
   "rules": {
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "react/display-name": "off",
     "import/order": [
       "warn",

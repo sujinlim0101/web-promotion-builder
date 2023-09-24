@@ -31,7 +31,7 @@ export const Input = <T extends FieldValues>({
         type={type}
         className={`${className} ${width === "xs" ? "w-40" : "w-full"} ${
           type !== "color"
-            ? "bg-gray50 border border-gray300 text-gray900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-4 px-8 dark:bg-gray700 dark:border-gray600 dark:placeholder-gray400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            ? "bg-gray50 border border-gray300 text-gray900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-4 px-8"
             : "py-8 px-8"
         }`}
       />

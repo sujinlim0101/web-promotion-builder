@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 
+import { Tooltip } from "@/components/Tooltip";
 import { defaultStyleValues } from "@/constants/component.constant";
 import { picks } from "@/constants/pick.constant";
 import { usePageState } from "@/hooks/usePageState";
@@ -88,21 +89,25 @@ export const PreviewComponentPick = () => {
     <div className="flex gap-8 flex-col py-72 w-36">
       {picks.map((component) => {
         return (
-          <div
+          <Tooltip
+            content={component.component}
             key={component.component}
-            data-tooltip-target="button-loader-example-mobile-tooltip"
-            data-id={component}
-            className={`flex items-center justify-center w-36 h-36 font-medium text-gray700 bg-white border border-gray200 rounded-lg toggle-mobile-view hover:bg-gray100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray300 dark:focus:ring-gray500 dark:bg-gray800 focus:outline-none dark:text-gray400 dark:border-gray600 dark:hover:text-white dark:hover:bg-gray700 text-base`}
-            onClick={() => {
-              if (component.component === ComponentTypeEnum.Layout) {
-                handlePickLayout();
-              } else {
-                handlePickItem(component.component);
-              }
-            }}
+            position="left"
           >
-            {component.icon}
-          </div>
+            <div
+              data-id={component}
+              className={`flex items-center justify-center w-36 h-36 font-medium text-gray700 bg-white border border-gray200 rounded-lg toggle-mobile-view hover:bg-gray100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray300 focus:outline-none text-base`}
+              onClick={() => {
+                if (component.component === ComponentTypeEnum.Layout) {
+                  handlePickLayout();
+                } else {
+                  handlePickItem(component.component);
+                }
+              }}
+            >
+              {component.icon}
+            </div>
+          </Tooltip>
         );
       })}
     </div>

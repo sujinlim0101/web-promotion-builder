@@ -39,6 +39,8 @@ export const useDeleteSeletedByListener = () => {
     // delete keyboard listener for onl backspace
     const deleteWithBackSpace = (e: KeyboardEvent) => {
       if (e.key === "Backspace") {
+        const confirmed = window.confirm("정말 삭제하시겠습니까?");
+        if (!confirmed) return;
         deleteSelectedByListener();
       }
     };
