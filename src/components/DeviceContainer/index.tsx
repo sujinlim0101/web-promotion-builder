@@ -2,18 +2,19 @@ import type { ReactNode } from "react";
 
 import { usePreviewViewportState } from "@/hooks/usePreviewViewportState";
 
+import { IFrame } from "../../app/promotion_edit/components/PreveiwPart/IFrame";
+
 interface DeviceWrapperProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 export const DeviceContainer = ({ children }: DeviceWrapperProps) => {
-  const [viewPort] = usePreviewViewportState();
   return (
-    <div className={`border-8 border-gray900 mt-16 rounded-lg overflow-scroll	flex flex-col mx-auto ${
-      viewPort === "small_mobile" ? "w-375 h-667" : "w-414 h-896"
-    }`}>
-      <div
-        className={`bg-white relative transform grow`}
-      >{children}</div>
+    <div
+      className={`border-8 border-gray900 mt-16 rounded-lg overflow-scroll relative flex flex-col mx-auto`}
+    >
+      <div className={`bg-white transform grow`}>
+        <IFrame>{children}</IFrame>
+      </div>
     </div>
   );
 };

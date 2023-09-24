@@ -65,9 +65,8 @@ export const defaultButtonStyleValues: ButtonFormValues = {
   margin: DEFAULT_MARGIN,
   action: {
     type: null,
-    payload: []
-
-  }
+    payload: [],
+  },
 };
 
 export const buttonStyleFormValues: ButtonForm = [
@@ -157,8 +156,8 @@ const defaultLayoutStyleValues: LayoutFormValues = {
   position: "static",
   action: {
     type: null,
-    payload: []
-  }
+    payload: [],
+  },
 };
 
 export const layoutStyleFormValues: LayoutForm = [
@@ -175,7 +174,7 @@ export const layoutStyleFormValues: LayoutForm = [
         label: "하단 고정",
         value: "fixed",
       },
-    ]
+    ],
   },
   {
     label: "justify 정렬",
@@ -301,9 +300,8 @@ const defaultPageStyleValues: PageFormValues = {
   bgColor: "transparent",
   action: {
     type: null,
-    payload: []
-
-  }
+    payload: [],
+  },
 };
 
 const imageStyleFormValues: ImageForm = [
@@ -362,8 +360,7 @@ const defaultImageStyleValues: ImageFormValues = {
   justify: "center",
   action: {
     type: null,
-    payload: []
-
+    payload: [],
   },
 };
 
@@ -378,7 +375,7 @@ const defaultTextStyleValues: TextFormValues = {
   padding: DEFAULT_PADDING,
   action: {
     type: null,
-    payload: []
+    payload: [],
   },
 };
 
@@ -386,7 +383,7 @@ const textStyleFormValues: TextForm = [
   {
     label: "텍스트",
     name: "text",
-    component: "TextArea"
+    component: "TextArea",
   },
   {
     label: "정렬",
@@ -506,19 +503,17 @@ const textStyleFormValues: TextForm = [
 
 const defaultButtonActionValues: ButtonComponent["action"] = {
   type: null,
-  payload: []
-
+  payload: [],
 };
 
 const defaultImageActionValues: ImageComponent["action"] = {
   type: null,
-  payload: []
-
+  payload: [],
 };
 
 const defaultTextActionValues: TextComponent["action"] = {
   type: null,
-  payload: []
+  payload: [],
 };
 
 const actionFormValues = [

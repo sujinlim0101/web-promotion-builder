@@ -5,6 +5,7 @@ import { Color, Spacing } from "@/types/styles.type";
 import { layoutVariants } from "./layoutVariants";
 
 interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
+  display?: "flex" | "inline-flex" | "block" | "inline-block";
   direction?: "col" | "row";
   spacing?: Spacing;
   style?: CSSProperties;
@@ -34,6 +35,7 @@ interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Layout = ({
+  display = "flex",
   direction = "col",
   spacing = 0,
   style = {},
@@ -56,6 +58,7 @@ export const Layout = ({
     <div
       style={style}
       className={layoutVariants({
+        display,
         direction,
         justify,
         items,

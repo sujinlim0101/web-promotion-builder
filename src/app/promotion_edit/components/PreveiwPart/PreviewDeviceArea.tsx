@@ -1,8 +1,7 @@
 "use client";
 
+import PreviewPage from "@/app/preview-page/page";
 import { DeviceContainer } from "@/components/DeviceContainer";
-
-import { PreviewPage } from "./PreviewPage";
 
 export default function PreviewDeviceArea() {
   return (

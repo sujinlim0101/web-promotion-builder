@@ -1,12 +1,12 @@
-import Script from "next/script";
+"use client";
 
 import { Layout } from "@/components/Layout";
 import { usePageState } from "@/hooks/usePageState";
 import { ComponentTypeEnum } from "@/types/component.type";
 
-import { PreviewItems } from "./PreviewItems";
+import { PreviewItems } from "../promotion_edit/components/PreveiwPart/PreviewItems";
 
-export const PreviewPage = () => {
+export default function PreviewPage() {
   const [pageState] = usePageState();
 
   return (
@@ -26,4 +26,4 @@ export const PreviewPage = () => {
       })}
     </Layout>
   );
-};
+}

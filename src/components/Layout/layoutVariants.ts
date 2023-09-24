@@ -6,6 +6,13 @@ import { generateTwVariants } from "@/utils/generateVariants";
 export const layoutVariants = tv({
   extend: [spaceVariants],
   variants: {
+    display: {
+      flex: "flex",
+      block: "block",
+      inline: "inline",
+      "inline-block": "inline-block",
+      none: "none",
+    },
     direction: {
       row: "flex-row",
       col: "flex-col",

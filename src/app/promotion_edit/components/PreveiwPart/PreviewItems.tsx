@@ -31,8 +31,6 @@ export const PreviewItems = ({ layout }: { layout: LayoutComponent }) => {
       data-type="layout"
       data-selected={layout.selected}
       bottom={layout.position === "fixed" ? 0 : undefined}
-      right={layout.position === "fixed" ? 0 : undefined}
-      left={layout.position === "fixed" ? 0 : undefined}
       onClick={onLayoutSelect}
     >
       {layout.children.length > 0 ? (

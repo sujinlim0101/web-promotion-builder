@@ -1,5 +1,4 @@
 "use client";
-import { RecoilRoot } from "recoil";
 
 import { FormPart } from "./components/FormPart";
 import { PreveiwPart } from "./components/PreveiwPart";
@@ -9,12 +8,10 @@ import "../selected.scss";
 
 export default function Page() {
   return (
-    <div className="flex h-full">
-      <RecoilRoot>
-        <StructurePart />
-        <PreveiwPart />
-        <FormPart />
-      </RecoilRoot>
+    <div className="flex min-h-full">
+      <StructurePart />
+      <PreveiwPart />
+      <FormPart />
     </div>
   );
 }
