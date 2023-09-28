@@ -9,3 +9,7 @@
   outline: 1.5px solid rgb(34, 186, 186);
   outline-offset: -1.5px;
 }
+
+*[data-id="page"] {
+  outline: none;
+}

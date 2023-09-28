@@ -49,7 +49,7 @@ export const CompoundPromotionView = () => {
 
   return (
     <Layout
-      className="flex h-full flex-col overflow-scroll"
+      className="flex h-full flex-col"
       bgColor={pageState.bgColor}
       padding={pageState.padding}
       margin={pageState.margin}

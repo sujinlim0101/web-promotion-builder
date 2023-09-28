@@ -1,59 +1,58 @@
 import { useEffect } from "react";
 
-import { LayoutComponent, PageComponent } from "@/types/component.type";
-
 import { usePageState } from "./usePageState";
 
 export const useDeleteSeletedByListener = () => {
   const [pageState, setPageState] = usePageState();
 
-  const deleteSelectedByListener = () => {
-    // if layout is selected
-    const selectedLayout = pageState.children.find(
-      (child) => child.selected
-    ) as LayoutComponent;
-
-    if (selectedLayout) {
-      setPageState({
-        ...pageState,
-        children: pageState.children.filter(
-          (child) => child.id !== selectedLayout.id
-        ),
-      });
-      return;
-    }
-
-    // if children's children is selected
-    setPageState({
-      ...pageState,
-      children: pageState.children.map((child) => {
+  const deleteSelected = () => {
+    setPageState((prev) => {
+      // layout selected
+      const selected = prev.children.find((child) => child.selected);
+      if (selected) {
         return {
-          ...child,
-          children: child.children.filter((grandChild) => !grandChild.selected),
+          ...prev,
+          children: prev.children.filter((child) => child.id !== selected.id),
         };
-      }),
+      } else {
+        // if children's children is selected
+        return {
+          ...prev,
+          children: prev.children.map((child) => {
+            return {
+              ...child,
+              children: child.children.filter(
+                (grandChild) => !grandChild.selected
+              ),
+            };
+          }),
+        };
+      }
     });
   };
 
   useEffect(() => {
-    // delete keyboard listener for onl backspace
-    const deleteWithBackSpace = (e: KeyboardEvent) => {
-      if (e.key === "Backspace") {
-        // no input focus and delete key is pressed
-        if (document.activeElement?.tagName === "INPUT") return;
-
+    // keyboard listener for ctrl + d
+    const deleteWithCtrlD = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key === "d") {
         const confirmed = window.confirm("정말 삭제하시겠습니까?");
         if (!confirmed) return;
-        deleteSelectedByListener();
+        deleteSelected();
       }
     };
 
-    window.addEventListener("keydown", deleteWithBackSpace);
+    const iframe = document.getElementById("iframe") as HTMLIFrameElement;
 
+    // iframe and window both need to listen to the event
+    iframe.contentWindow?.document.addEventListener("keydown", deleteWithCtrlD);
+    window.addEventListener("keydown", deleteWithCtrlD);
     return () => {
-      window.removeEventListener("keydown", deleteWithBackSpace);
+      iframe.contentWindow?.document.removeEventListener(
+        "keydown",
+        deleteWithCtrlD
+      );
+      window.removeEventListener("keydown", deleteWithCtrlD);
     };
-  }, [pageState]);
-
+  }, []);
   console.log("pageState", pageState);
 };

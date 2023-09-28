@@ -10,7 +10,7 @@ interface DeviceWrapperProps {
 export const DeviceContainer = ({ children }: DeviceWrapperProps) => {
   return (
     <div
-      className={`border-8 border-gray900 mt-16 rounded-lg overflow-scroll relative flex flex-col mx-auto`}
+      className={`border-8 border-gray900 mt-16 rounded-lg relative flex flex-col mx-auto`}
     >
       <div className={`bg-white transform grow`}>
         <IFrame>{children}</IFrame>

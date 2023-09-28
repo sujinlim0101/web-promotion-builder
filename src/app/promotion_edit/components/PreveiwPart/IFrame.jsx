@@ -10,7 +10,7 @@ export const IFrame = ({ children }) => {
   const container = ref?.contentWindow?.document?.body;
 
   return (
-    <iframe ref={setRef} height={667} width={375}>
+    <iframe ref={setRef} height={667} width={375} id="iframe">
       {/* create portal for link stylesheet /global.css to iframe */}
       {container &&
         createPortal(

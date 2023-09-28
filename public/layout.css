@@ -3717,6 +3717,8 @@ select {
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[13].use[5]!./src/app/selected.scss ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /* data-selected*/
+/* data-selected*/
+
 *[data-selected="true"] {
   outline: 1.5px solid orange !important;
   outline-offset: -1.5px;
@@ -3725,4 +3727,8 @@ select {
 *[data-selected]:hover {
   outline: 1.5px solid rgb(34, 186, 186);
   outline-offset: -1.5px;
+}
+
+*[data-id="page"] {
+  outline: none !important;Í
 }
