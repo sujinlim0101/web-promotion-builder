@@ -1,17 +1,17 @@
-"use client";
+import { usePreviewViewportState } from "@/hooks/usePreviewViewportState";
 
-import PreviewPage from "@/app/preview-page/page";
-import { DeviceContainer } from "@/components/DeviceContainer";
-import { useDeleteSeletedByListener } from "@/hooks/useDeleteSeletedByListener";
+import { IFramePreview } from "./IFramePreview";
+import LadingPage from "./LadingPage";
 
-export default function PreviewDeviceArea() {
-  useDeleteSeletedByListener();
-
+export const PreviewDeviceArea = () => {
+  usePreviewViewportState();
   return (
-    <div className="p-16">
-      <DeviceContainer>
-        <PreviewPage />
-      </DeviceContainer>
+    <div
+      className={`border-8 border-gray900 mt-16 rounded-lg relative flex flex-col h-fit`}
+    >
+      <IFramePreview>
+        <LadingPage />
+      </IFramePreview>
     </div>
   );
-}
+};

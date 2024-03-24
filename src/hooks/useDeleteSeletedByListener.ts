@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { usePageState } from "./usePageState";
 
 export const useDeleteSeletedByListener = () => {
-  const [pageState, setPageState] = usePageState();
+  const [, setPageState] = usePageState();
 
   const deleteSelected = () => {
     setPageState((prev) => {
@@ -32,9 +32,11 @@ export const useDeleteSeletedByListener = () => {
   };
 
   useEffect(() => {
-    // keyboard listener for ctrl + d
     const deleteWithCtrlD = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key === "d") {
+      if (
+        e.ctrlKey && // ctrl
+        e.keyCode === 68 // d
+      ) {
         const confirmed = window.confirm("정말 삭제하시겠습니까?");
         if (!confirmed) return;
         deleteSelected();
@@ -43,7 +45,6 @@ export const useDeleteSeletedByListener = () => {
 
     const iframe = document.getElementById("iframe") as HTMLIFrameElement;
 
-    // iframe and window both need to listen to the event
     iframe.contentWindow?.document.addEventListener("keydown", deleteWithCtrlD);
     window.addEventListener("keydown", deleteWithCtrlD);
     return () => {
@@ -54,5 +55,4 @@ export const useDeleteSeletedByListener = () => {
       window.removeEventListener("keydown", deleteWithCtrlD);
     };
   }, []);
-  console.log("pageState", pageState);
 };

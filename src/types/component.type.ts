@@ -24,24 +24,22 @@ export interface Selectable {
   id: string;
 }
 
-type BridgeName = "openWeb" | "downloadCoupon" | "moveToApp"
-
+type BridgeName = "openWeb" | "downloadCoupon" | "moveToApp";
 
 export type Action = {
   action: {
     type: "bridge" | null;
-    bridgeName?: BridgeName
+    bridgeName?: BridgeName;
     payload: any[];
-  }
+  };
 };
-
 
 export type Component =
   | ButtonComponent
   | TextComponent
   | ImageComponent
   | PageComponent
-  | LayoutComponent
+  | LayoutComponent;
 
 export type ItemComponent = ButtonComponent | TextComponent | ImageComponent;
 
@@ -70,7 +68,7 @@ export interface ImageComponent extends Selectable, Action {
   name: ComponentTypeEnum.Image;
   src: string;
   width: number;
-  height: number;
+  height?: number;
   justify: "start" | "center" | "end" | "inherit" | "between";
 }
 

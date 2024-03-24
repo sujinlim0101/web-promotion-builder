@@ -5,7 +5,7 @@ import { layoutVariants } from "../Layout/layoutVariants";
 interface ImageProps extends React.HTMLAttributes<HTMLImageElement> {
   src: string;
   width: number;
-  height: number;
+  height?: number;
   justify?: "start" | "center" | "end" | "inherit" | "between";
   alt?: string;
 }

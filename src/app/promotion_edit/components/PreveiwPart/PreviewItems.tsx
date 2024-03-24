@@ -5,11 +5,20 @@ import { Image } from "@/components/Image";
 import { Layout } from "@/components/Layout";
 import { Text } from "@/components/Text";
 import { usePageState } from "@/hooks/usePageState";
-import { ComponentTypeEnum, LayoutComponent } from "@/types/component.type";
+import {
+  ComponentTypeEnum,
+  ItemComponent,
+  LayoutComponent,
+} from "@/types/component.type";
 
 import { useComponentSelect } from "../../hooks/useComponentSelect";
 
-export const PreviewItems = ({ layout }: { layout: LayoutComponent }) => {
+type PrevieItemsProps = {
+  layout: LayoutComponent;
+  mode: "landing" | "edit";
+};
+
+export const PreviewItems = ({ layout, mode }: PrevieItemsProps) => {
   const [pageState] = usePageState();
 
   const { updateChildrenSelectedById } = useComponentSelect();
@@ -23,6 +32,14 @@ export const PreviewItems = ({ layout }: { layout: LayoutComponent }) => {
     ) {
       updateChildrenSelectedById(layout.id);
     }
+  };
+
+  const getAttributeData = (grandChild: ItemComponent) => {
+    if (mode === "landing") return undefined;
+    return {
+      "data-id": grandChild.id,
+      "data-selected": grandChild.selected,
+    };
   };
 
   return (
@@ -40,9 +57,7 @@ export const PreviewItems = ({ layout }: { layout: LayoutComponent }) => {
               <Button
                 key={grandChild.id}
                 {...grandChild}
-                data-id={grandChild.id}
-                data-selected={grandChild.selected}
-                data-type="item"
+                {...getAttributeData(grandChild)}
                 onClick={() => updateChildrenSelectedById(grandChild.id)}
               />
             );
@@ -53,9 +68,7 @@ export const PreviewItems = ({ layout }: { layout: LayoutComponent }) => {
               // eslint-disable-next-line jsx-a11y/alt-text
               <Image
                 key={grandChild.id}
-                data-id={grandChild.id}
-                data-selected={grandChild.selected}
-                data-type="item"
+                {...getAttributeData(grandChild)}
                 {...grandChild}
                 onClick={() => updateChildrenSelectedById(grandChild.id)}
               />
@@ -66,10 +79,8 @@ export const PreviewItems = ({ layout }: { layout: LayoutComponent }) => {
             return (
               // eslint-disable-next-line react/jsx-no-undef
               <Text
-                data-id={grandChild.id}
-                data-selected={grandChild.selected}
+                {...getAttributeData(grandChild)}
                 key={grandChild.id}
-                data-type="item"
                 {...grandChild}
                 onClick={() => updateChildrenSelectedById(grandChild.id)}
               />

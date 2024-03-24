@@ -4,13 +4,21 @@ import { useState } from "react";
 
 import { createPortal } from "react-dom";
 
-export const IFrame = ({ children }) => {
+export const IFramePreview = ({ children }) => {
   const [ref, setRef] = useState();
 
   const container = ref?.contentWindow?.document?.body;
 
   return (
-    <iframe ref={setRef} height={667} width={375} id="iframe">
+    <iframe
+      ref={setRef}
+      height={667}
+      width={375}
+      id="iframe"
+      style={{
+        backgroundColor: "white",
+      }}
+    >
       {/* create portal for link stylesheet /global.css to iframe */}
       {container &&
         createPortal(

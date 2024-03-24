@@ -318,12 +318,6 @@ const imageStyleFormValues: ImageForm = [
     type: "number",
   },
   {
-    label: "높이",
-    name: "height",
-    component: "Input",
-    type: "number",
-  },
-  {
     label: "정렬",
     name: "justify",
     component: "Select",
@@ -354,9 +348,8 @@ const imageStyleFormValues: ImageForm = [
 
 const defaultImageStyleValues: ImageFormValues = {
   name: ComponentTypeEnum.Image,
-  src: "https://picsum.photos/200/300",
-  width: 200,
-  height: 300,
+  src: "http://via.placeholder.com/640x480",
+  width: 640,
   justify: "center",
   action: {
     type: null,
